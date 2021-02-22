@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body_class %}game{% endblock %}
+
+{% block body %}
+    <div class="row">
+<div class="main-content">
+  <div class="title">Heyendaal Muziekbingo</div>
+  <div class="bingo-card">
+  {% for row in object.items %}
+
+    {% for cell in row %}
+    <div class="bingo-card__item">
+        {{ cell }}
+        <span class="bingo-card__checkbox"></span>
+    </div>
+    {% endfor %}
+
+{% endfor %}
+  </div>
+</div>
+</div>
+<div class="row">
+<aside class="context">
+  <div class="clear-button">Bord leegmaken</div>
+</aside>
+</div>
+{% endblock %}

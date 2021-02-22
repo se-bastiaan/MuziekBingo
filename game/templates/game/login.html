@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body_class %}game{% endblock %}
+
+{% block body %}
+    {% bootstrap_messages %}
+    <form action="{% url 'game:login' %}" method="post" class="form mt-4">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+            Inloggen
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

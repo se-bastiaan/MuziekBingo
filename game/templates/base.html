@@ -1,0 +1,50 @@
+{% load static compress bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}Bingo{% endblock %}</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    {% block css_head %}
+        {% bootstrap_css %}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet"> 
+        {% compress css %}
+            <link href="{% static "css/main.scss" %}" rel="stylesheet"
+                  type="text/x-scss">
+        {% endcompress %}
+    {% endblock %}
+
+    {% block js_head %}
+    {% endblock %}
+
+    {% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+{% block pre-body %}{% endblock pre-body %}
+
+<main role="main" class="container">
+    {% block body %}{% endblock body %}
+</main>
+
+{% block post-body %}{% endblock post-body %}
+
+{% block js_body %}
+    {% bootstrap_javascript jquery='full' %}
+    {% compress js %}
+        <script type="text/javascript"
+                src="{% static "js/js.cookie.min.js" %}"></script>
+        <script type="text/javascript"
+                src="{% static "js/main.js" %}"></script>
+    {% endcompress %}
+{% endblock %}
+</body>
+</html>
