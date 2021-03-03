@@ -25,7 +25,7 @@ class PlayerResource(resources.ModelResource):
 @admin.register(Player)
 class PlayerAdmin(ImportExportModelAdmin):
     resource_class = PlayerResource
-    list_display = ("first_name", "last_name", "user_code")
+    list_display = ("first_name1", "first_name2", "user_code")
 
 
 @admin.register(Card)
