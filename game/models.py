@@ -15,7 +15,9 @@ class Player(models.Model):
         return f"{self.code[0:3]}-{self.code[3:6]}"
 
     def __str__(self):
-        return f"{self.first_name1} {self.first_name2} {self.code[0:3]}-{self.code[3:6]}"
+        return (
+            f"{self.first_name1} {self.first_name2} {self.code[0:3]}-{self.code[3:6]}"
+        )
 
 
 class Song(models.Model):
@@ -90,14 +92,13 @@ class Card(models.Model):
 
         return items
 
-    
     @items.setter
     def items(self, value):
         if len(value) < 25:
             raise Exception
 
         value = list(value)
-        
+
         for x in range(5):
             for y in range(5):
-                setattr(self, f'item{x+1}{y+1}', value.pop())
+                setattr(self, f"item{x+1}{y+1}", value.pop())

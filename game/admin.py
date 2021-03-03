@@ -13,8 +13,8 @@ class SongResource(resources.ModelResource):
 @admin.register(Song)
 class SongAdmin(ImportExportModelAdmin):
     resource_class = SongResource
-    list_display = ('artist', 'title', 'played')
-    search_fields = ('artist', 'title')
+    list_display = ("artist", "title", "played")
+    search_fields = ("artist", "title")
 
 
 class PlayerResource(resources.ModelResource):

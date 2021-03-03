@@ -14,13 +14,18 @@ class LoginView(FormView):
     form_class = LoginForm
 
     def form_valid(self, form):
-        user_code = form.cleaned_data["user_code"].replace('-', '').upper()
+        user_code = form.cleaned_data["user_code"].replace("-", "").upper()
         player = Player.objects.filter(code=user_code).first()
 
-
         if player.card_set.count() == 0:
-            song_pks = Song.objects.values_list('pk', flat=True)
-            selected_pks = random.sample(list(song_pks), 25)
+            song_pks = Song.objects.values_list("pk", flat=True)
+            selected_pks = (
+                random.sample(list(song_pks)[:15], 5)
+                + random.sample(list(song_pks)[15:30], 5)
+                + random.sample(list(song_pks)[30:45], 5)
+                + random.sample(list(song_pks)[45:60], 5)
+                + random.sample(list(song_pks)[60:75], 5)
+            )
             songs = Song.objects.filter(pk__in=selected_pks)
 
             new_card = Card()

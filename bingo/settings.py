@@ -137,9 +137,7 @@ SECRET_KEY = from_env(
     "SECRET_KEY", development="#o-0d1q5&^&06tn@8pr1f(n3$crafd++^%sacao7hj*ea@c)^t"
 )
 
-ZOOM_LINK = from_env(
-    "ZOOM_LINK", development="https://zoom.example"
-)
+ZOOM_LINK = from_env("ZOOM_LINK", development="https://zoom.example")
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = [
