@@ -155,7 +155,7 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = from_env("STATIC_ROOT", development=os.path.join(BASE_DIR, "static"))
 
-STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 SENDFILE_BACKEND = setting(
     development="django_sendfile.backends.development",

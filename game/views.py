@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 import random
 
@@ -19,6 +20,13 @@ class LoginView(FormView):
 
         if player.card_set.count() == 0:
             song_pks = Song.objects.values_list("pk", flat=True)
+
+            if len(song_pks) == 0:
+                messages.error(
+                    self.request, "De bingokaarten zijn nog niet beschikbaar."
+                )
+                return redirect("game:login")
+
             selected_pks = (
                 random.sample(list(song_pks)[:15], 5)
                 + random.sample(list(song_pks)[15:30], 5)
