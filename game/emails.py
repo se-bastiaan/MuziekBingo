@@ -12,7 +12,11 @@ def send_welcome_email():
         for player in players:
             email_body = loader.render_to_string(
                 "game/emails/welcome.txt",
-                {"player": player, "base_url": settings.BASE_URL},
+                {
+                    "player": player,
+                    "base_url": settings.BASE_URL,
+                    "zoom_link": settings.ZOOM_LINK,
+                },
             )
 
             print(player)

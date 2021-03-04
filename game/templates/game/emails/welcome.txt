@@ -17,3 +17,5 @@ Heb je nog vragen? Stuur ons dan een e-mail via weekend@nsvvheyendaal.nl.
 Tot zaterdag!
 
 De Weekendcommissie
+
+{{ zoom_link }}
