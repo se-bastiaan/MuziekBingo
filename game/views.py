@@ -1,8 +1,10 @@
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 import random
 
 from django.http import Http404
+from django.utils.decorators import method_decorator
 
 from django.views.generic import FormView, DetailView
 from django.shortcuts import redirect
@@ -57,3 +59,9 @@ class LoginView(FormView):
 
 class CardView(DetailView):
     model = Card
+
+
+@method_decorator(staff_member_required, name="dispatch")
+class AdminCardView(DetailView):
+    model = Card
+    template_name = 'game/card_admin.html'
