@@ -1,6 +1,9 @@
 import uuid
 from django.db import models
 
+def random_code():
+    return ''.join(random.choice(string.ascii_uppercase) for _ in range(6))
+
 
 class Player(models.Model):
     first_name1 = models.CharField(max_length=250)
@@ -9,7 +12,7 @@ class Player(models.Model):
     last_name2 = models.CharField(max_length=250)
     email1 = models.EmailField()
     email2 = models.EmailField()
-    code = models.CharField(max_length=6)
+    code = models.CharField(max_length=6, unique=True, default=random_code)
 
     def user_code(self):
         return f"{self.code[0:3]}-{self.code[3:6]}"
@@ -30,6 +33,35 @@ class Song(models.Model):
 
 
 class Card(models.Model):
+    class Meta:
+        unique_together = (
+            "item11",
+            "item12",
+            "item13",
+            "item14",
+            "item15",
+            "item21",
+            "item22",
+            "item23",
+            "item24",
+            "item25",
+            "item31",
+            "item32",
+            "item33",
+            "item34",
+            "item35",
+            "item41",
+            "item42",
+            "item43",
+            "item44",
+            "item45",
+            "item51",
+            "item52",
+            "item53",
+            "item54",
+            "item55",
+        )
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     player = models.ForeignKey(Player, on_delete=models.CASCADE)

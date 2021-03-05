@@ -14,6 +14,27 @@ class LoginView(FormView):
     template_name = "game/login.html"
     form_class = LoginForm
 
+    def _create_card(self):
+        try:
+            song_pks = Song.objects.values_list("pk", flat=True)
+
+            selected_pks = (
+                random.sample(list(song_pks)[:16], 5)
+                + random.sample(list(song_pks)[16:32], 5)
+                + random.sample(list(song_pks)[32:48], 5)
+                + random.sample(list(song_pks)[48:64], 5)
+                + random.sample(list(song_pks)[64:], 5)
+            )
+            songs = Song.objects.filter(pk__in=selected_pks)
+
+            new_card = Card()
+            new_card.player = player
+            new_card.items = songs
+            new_card.save()
+            return False
+        except:
+            return True
+
     def form_valid(self, form):
         user_code = form.cleaned_data["user_code"].replace("-", "").upper()
         player = Player.objects.filter(code=user_code).first()
@@ -27,19 +48,8 @@ class LoginView(FormView):
                 )
                 return redirect("game:login")
 
-            selected_pks = (
-                random.sample(list(song_pks)[:15], 5)
-                + random.sample(list(song_pks)[15:30], 5)
-                + random.sample(list(song_pks)[30:45], 5)
-                + random.sample(list(song_pks)[45:60], 5)
-                + random.sample(list(song_pks)[60:75], 5)
-            )
-            songs = Song.objects.filter(pk__in=selected_pks)
-
-            new_card = Card()
-            new_card.player = player
-            new_card.items = songs
-            new_card.save()
+            while self._create_card():
+                print("Have to retry")
 
         return redirect("game:card", pk=player.card_set.first().pk)
 
