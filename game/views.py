@@ -14,7 +14,7 @@ class LoginView(FormView):
     template_name = "game/login.html"
     form_class = LoginForm
 
-    def _create_card(self):
+    def _create_card(self, player):
         try:
             song_pks = Song.objects.values_list("pk", flat=True)
 
@@ -30,6 +30,7 @@ class LoginView(FormView):
             new_card = Card()
             new_card.player = player
             new_card.items = songs
+            new_card.full_clean()
             new_card.save()
             return False
         except:
@@ -48,7 +49,7 @@ class LoginView(FormView):
                 )
                 return redirect("game:login")
 
-            while self._create_card():
+            while self._create_card(player):
                 print("Have to retry")
 
         return redirect("game:card", pk=player.card_set.first().pk)

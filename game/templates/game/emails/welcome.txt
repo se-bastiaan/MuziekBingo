@@ -6,11 +6,15 @@ Zaterdag is het eindelijk tijd voor een klein vleugje Heyendaalweekend.
 Het evenement vindt plaats via Zoom. De link daarvoor kun je onderaan deze e-mail vinden.
 We beginnen om 15u. Zorg ervoor dat je op tijd bent, want wie weet mis je anders de eerste liedjes.
 
-Om mee te doen met de bingo heb je natuurlijk ook een bingokaart nodig, daarvoor is deze code:
+Om mee te doen met de bingo hebben jullie natuurlijk ook een bingokaart nodig, daarvoor is deze code:
 {{ player.user_code }}
+
+Je speelt samen met één bingokaart.
 
 Hiermee kun je tijdens de bingo inloggen op {{ base_url }}. Zonder code heb je geen bingokaart en kun je dus niet meedoen.
 Bewaar deze e-mail dus goed!
+
+Vergeet ook geen bittertragisch of schittermagisch outfit met hoofddeksel(!) aan te doen en zet je webcam lekker aan.
 
 Heb je nog vragen? Stuur ons dan een e-mail via weekend@nsvvheyendaal.nl.
 
