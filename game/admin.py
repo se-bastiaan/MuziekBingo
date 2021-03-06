@@ -17,6 +17,13 @@ class SongAdmin(ImportExportModelAdmin):
     resource_class = SongResource
     list_display = ("artist", "title", "played")
     search_fields = ("artist", "title")
+    actions = ('mark_played', 'mark_not_played')
+
+    def mark_played(self, request, queryset):
+        queryset.update(played=True)
+
+    def mark_not_played(self, request, queryset):
+        queryset.update(played=False)
 
 
 class PlayerResource(resources.ModelResource):
